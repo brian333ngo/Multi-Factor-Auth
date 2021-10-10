@@ -3,15 +3,16 @@ package com.brian.ngo.entity;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class BaseEntity {
+public class BaseEntity implements Serializable {
     @Id
     private Integer id;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private String creadteddBy;
-    private String updateddBy;
+    private String createdBy;
+    private String updatedBy;
     private boolean isDeleted;
 }

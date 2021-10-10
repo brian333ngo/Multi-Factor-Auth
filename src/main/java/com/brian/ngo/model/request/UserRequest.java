@@ -7,5 +7,5 @@ public class UserRequest {
     private String name;
     private Integer age;
     private String userName;
-    private String password;
+    private String passWord;
 }

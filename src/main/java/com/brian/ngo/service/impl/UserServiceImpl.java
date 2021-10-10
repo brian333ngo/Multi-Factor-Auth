@@ -2,6 +2,7 @@ package com.brian.ngo.service.impl;
 
 import com.brian.ngo.entity.User;
 import com.brian.ngo.mapper.UserMapper;
+import com.brian.ngo.model.request.UserRequest;
 import com.brian.ngo.model.response.UserResponse;
 import com.brian.ngo.repository.UserRepository;
 import com.brian.ngo.service.UserService;
@@ -20,9 +21,9 @@ public class UserServiceImpl implements UserService {
     final UserMapper mapper;
 
     @Override
-    public Mono<UserResponse> create(User user) {
+    public Mono<UserResponse> create(UserRequest user) {
         Function<User, UserResponse> toResponse = mapper::toResponse;
-        return repository.save(user).map(mapper::toResponse);
+        return repository.save(mapper.toEntity(user)).map(mapper::toResponse);
     }
 
     @Override
